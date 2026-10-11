@@ -205,7 +205,7 @@
       border: 0;
       margin: 18px 0 10px;
       background: transparent;
-      min-height: 400px;
+      min-height: 200px;
     }
 
     .small {
@@ -341,13 +341,22 @@
           <p>Pactulys sortira d'abord sur Windows, avec un abonnement et 14 jours d'essai gratuit, sans carte bancaire.
             Les premiers inscrits bénéficieront d'un prix pionniers réduit. Une version mobile suivra.</p>
           <!-- Formulaire Tally jadW1a (modifiable sur tally.so). Le lien sert si l'intégration est bloquée. -->
-          <iframe class="tally"
-            src="https://tally.so/embed/jadW1a?hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
-            data-tally-src="https://tally.so/embed/jadW1a?hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
-            title="Rejoindre la liste d'attente" loading="lazy"></iframe>
-          <p class="small">Le formulaire ne s'affiche pas ? <a href="https://tally.so/r/jadW1a">Inscrivez-vous ici</a>.
-          </p>
-          <script src="https://tally.so/widgets/embed.js" async></script>
+          <iframe class="tally" data-tally-src="https://tally.so/embed/jadW1a?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" title="Rejoindre la liste d'attente" loading="lazy" width="100%" height="380"></iframe>
+          <p class="small">Le formulaire ne s'affiche pas ? <a href="https://tally.so/r/jadW1a">Inscrivez-vous ici</a>.</p>
+          <script>
+            // Intégration officielle Tally : sans attribut src, embed.js charge le
+            // formulaire et ajuste sa hauteur ; sans le script, src est posé à la main.
+            (function () {
+              var w = "https://tally.so/widgets/embed.js";
+              var load = function () {
+                if (typeof Tally !== "undefined") { Tally.loadEmbeds(); return; }
+                document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; });
+              };
+              var s = document.createElement("script");
+              s.src = w; s.onload = load; s.onerror = load;
+              document.body.appendChild(s);
+            })();
+          </script>
           <p class="small">Votre adresse sert uniquement à vous prévenir du lancement et de l'offre pionniers. Elle
             n'est ni vendue ni partagée. Vous pouvez demander sa suppression à tout moment en écrivant à <a
               href="mailto:giovidoh@gmail.com">giovidoh@gmail.com</a>.</p>
