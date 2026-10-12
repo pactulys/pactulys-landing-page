@@ -7,252 +7,278 @@
   <title>Pactulys — le pacte d'Ulysse pour votre PC</title>
   <meta name="description"
     content="Pactulys bloque la pornographie sur votre PC Windows pour une durée que vous choisissez. Une fois posé, le verrou ne se lève pas avant son terme. Sans surveillance de votre vie privée.">
+  <meta name="theme-color" content="#f3ece0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f1a17" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Crect%20x%3D%2221.5%22%20y%3D%224%22%20width%3D%225%22%20height%3D%2234%22%20rx%3D%222%22%20fill%3D%22%231f5f4a%22%2F%3E%3Cpath%20d%3D%22M26.5%205%20L40%209.5%20L26.5%2014%20Z%22%20fill%3D%22%23c86b3c%22%2F%3E%3Cpath%20d%3D%22M14.5%2021.5%20Q24%2017.5%2033.5%2021.5%20M14.5%2028.5%20Q24%2024.5%2033.5%2028.5%22%20fill%3D%22none%22%20stroke%3D%22%23c86b3c%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22%2F%3E%3Crect%20x%3D%227%22%20y%3D%2241%22%20width%3D%2234%22%20height%3D%224%22%20rx%3D%222%22%20fill%3D%22%231f5f4a%22%2F%3E%3C%2Fsvg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@400;600&display=swap">
   <style>
     :root {
-      --bg: #f7f6f2;
-      --surface: #ffffff;
-      --text: #1d1f21;
-      --muted: #5b6066;
-      --line: #e2e0d8;
-      --accent: #1f5f4a;
-      --accent-text: #ffffff;
-      --accent-soft: #e5efe9;
-      --warn-soft: #f6efe0;
+      --font-title: "Marcellus", Georgia, serif;
+      --font-text: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --fs-display: clamp(34px, 26px + 2.3vw, 54px);
+      --fs-h2: clamp(27px, 22px + 1.35vw, 38px);
+      --fs-h3: clamp(20px, 19.1px + .25vw, 22px);
+      --fs-lead: clamp(18px, 17.1px + .25vw, 20px);
+      --fs-body: clamp(17px, 16.5px + .12vw, 18px);
+      --fs-small: 15px;
+      --fs-label: 13px;
+      --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+      --container: 1120px; --gutter: clamp(20px, 4vw, 32px); --measure: 64ch;
+      --r-1: 4px; --r-2: 8px; --r-3: 14px; --r-pill: 999px;
+      --ease-swell: cubic-bezier(.45, 0, .55, 1);
+      --ease-tension: cubic-bezier(.22, .61, .36, 1);
+      --ease-settle: cubic-bezier(.16, 1, .3, 1);
+      --ease-pull: cubic-bezier(.65, 0, .35, 1);
+      --d-tension: 450ms; --d-reveal: 900ms; --d-knot: 1200ms; --d-swell: 7s;
+      --bg: #f3ece0; --surface: #fbf7f0; --surface-2: #efe4d2; --text: #1a1411; --muted: #5b5048; --line: #ded2bf;
+      --accent: #1f5f4a; --accent-hover: #174a3a; --accent-text: #ffffff; --accent-soft: #e1ebe3; --clay: #c86b3c; --focus: #1f5f4a;
+      --sh-1: 0 1px 0 rgba(26,20,17,.05), 0 2px 8px -2px rgba(26,20,17,.10);
+      --sh-2: 0 2px 0 rgba(26,20,17,.05), 0 14px 30px -14px rgba(26,20,17,.30);
+      --il-sky: var(--bg); --il-sun: #c86b3c; --il-rock: #3a2f27; --il-rock2: #241c17; --il-fig: #1a1411; --il-inc: #efe4d2; --il-song: #c86b3c;
+      --il-sea1: #4d9580; --il-sea2: #2f7663; --il-sea3: #1f5f4a; --il-rope: #d08a3c; --il-ropet: #8a5420; --il-shade: rgba(20,35,30,.22);
+      --logo-ink: #1f5f4a; --logo-rope: #c86b3c; --logo-text: #1a1411;
+      color-scheme: light dark;
     }
 
     @media (prefers-color-scheme: dark) {
       :root:not([data-theme="light"]) {
-        --bg: #141617;
-        --surface: #1c1f20;
-        --text: #ecebe7;
-        --muted: #a3a8ad;
-        --line: #2e3234;
-        --accent: #6cc4a1;
-        --accent-text: #0f1a15;
-        --accent-soft: #1d2b25;
-        --warn-soft: #2a2519;
+      --bg: #0f1a17; --surface: #16241f; --surface-2: #132520; --text: #f1e9dc; --muted: #b3ab9e; --line: #5d7169;
+      --accent: #7fc8a9; --accent-hover: #9ad6bc; --accent-text: #0f1d18; --accent-soft: #1b2e27; --clay: #d9935f; --focus: #7fc8a9;
+      --sh-1: 0 1px 0 rgba(0,0,0,.3), 0 2px 8px -2px rgba(0,0,0,.5);
+      --sh-2: 0 2px 0 rgba(0,0,0,.3), 0 14px 30px -14px rgba(0,0,0,.7);
+      --il-sun: #e7d3b0; --il-rock: #3e564d; --il-rock2: #2c4038; --il-fig: #d9935f; --il-inc: #0f1a17; --il-song: #d9935f;
+      --il-sea1: #2c6656; --il-sea2: #225546; --il-sea3: #1a4639; --il-rope: #14211d; --il-ropet: #e0a85a; --il-shade: rgba(0,0,0,.35);
+      --logo-ink: #7fc8a9; --logo-rope: #d9935f; --logo-text: #f1e9dc;
       }
     }
 
     :root[data-theme="dark"] {
-      --bg: #141617;
-      --surface: #1c1f20;
-      --text: #ecebe7;
-      --muted: #a3a8ad;
-      --line: #2e3234;
-      --accent: #6cc4a1;
-      --accent-text: #0f1a15;
-      --accent-soft: #1d2b25;
-      --warn-soft: #2a2519;
+      --bg: #0f1a17; --surface: #16241f; --surface-2: #132520; --text: #f1e9dc; --muted: #b3ab9e; --line: #5d7169;
+      --accent: #7fc8a9; --accent-hover: #9ad6bc; --accent-text: #0f1d18; --accent-soft: #1b2e27; --clay: #d9935f; --focus: #7fc8a9;
+      --sh-1: 0 1px 0 rgba(0,0,0,.3), 0 2px 8px -2px rgba(0,0,0,.5);
+      --sh-2: 0 2px 0 rgba(0,0,0,.3), 0 14px 30px -14px rgba(0,0,0,.7);
+      --il-sun: #e7d3b0; --il-rock: #3e564d; --il-rock2: #2c4038; --il-fig: #d9935f; --il-inc: #0f1a17; --il-song: #d9935f;
+      --il-sea1: #2c6656; --il-sea2: #225546; --il-sea3: #1a4639; --il-rope: #14211d; --il-ropet: #e0a85a; --il-shade: rgba(0,0,0,.35);
+      --logo-ink: #7fc8a9; --logo-rope: #d9935f; --logo-text: #f1e9dc;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      -webkit-text-size-adjust: 100%;
-    }
-
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: var(--font-text); font-size: var(--fs-body); line-height: 1.6;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
     }
+    a { color: var(--accent); text-underline-offset: .18em; }
+    a:hover { color: var(--accent-hover); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+    svg { display: block; }
+    h1, h2 { font-family: var(--font-title); font-weight: 400; text-wrap: balance; }
+    h1 { font-size: var(--fs-display); line-height: 1.05; margin: 0 0 var(--s-5); max-width: 17ch; }
+    h2 { font-size: var(--fs-h2); line-height: 1.15; margin: 0 0 var(--s-5); }
+    h3 { font-size: var(--fs-h3); line-height: 1.3; font-weight: 600; margin: 0 0 var(--s-2); }
+    p { text-wrap: pretty; }
 
-    .wrap {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
+    .skip { position: absolute; left: var(--s-4); top: -60px; background: var(--accent); color: var(--accent-text); padding: var(--s-2) var(--s-4); border-radius: var(--r-1); z-index: 10; }
+    .skip:focus { top: var(--s-4); }
 
-    header {
-      padding: 20px 0;
-    }
+    .wrap { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+    header.wrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); padding-top: var(--s-5); padding-bottom: var(--s-5); }
+    .tagline { color: var(--muted); font-size: var(--fs-small); }
 
-    .brand {
-      font-weight: 700;
-      font-size: 20px;
-      letter-spacing: .02em;
-    }
-
-    .tagline {
-      color: var(--muted);
-      font-size: 15px;
-      margin-left: 6px;
-    }
-
-    .hero {
-      padding-top: 48px;
-      padding-bottom: 56px;
-    }
-
-    h1 {
-      font-size: clamp(30px, 6vw, 46px);
-      line-height: 1.15;
-      margin: 0 0 18px;
-      max-width: 18ch;
-    }
-
-    h2 {
-      font-size: clamp(23px, 4vw, 30px);
-      line-height: 1.25;
-      margin: 0 0 20px;
-    }
-
-    h3 {
-      font-size: 18px;
-      margin: 0 0 6px;
-    }
-
-    .lead {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 60ch;
-      margin: 0 0 28px;
-    }
+    .hero { padding-top: clamp(24px, 6vw, 64px); }
+    .lead { font-size: var(--fs-lead); line-height: 1.55; color: var(--muted); max-width: var(--measure); margin: 0 0 var(--s-6); }
 
     .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--accent-text);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 13px 22px;
-      border-radius: 8px;
-      border: 0;
-      font-size: 17px;
-      cursor: pointer;
+      display: inline-flex; align-items: center; gap: var(--s-3); min-height: 48px; white-space: nowrap;
+      padding: 12px 22px; border-radius: var(--r-1); border: 0;
+      background: var(--accent); color: var(--accent-text);
+      font: 600 17px/1.2 var(--font-text); text-decoration: none; cursor: pointer;
+      transition: background-color var(--d-tension) var(--ease-tension);
+    }
+    .btn:hover { background: var(--accent-hover); color: var(--accent-text); }
+    .btn .cord { overflow: visible; }
+    .btn .cord g { transform-box: fill-box; transform-origin: 50% 50%; transition: transform var(--d-tension) var(--ease-tension); }
+    .btn:hover .cord g, .btn:focus-visible .cord g, .btn:active .cord g { transform: scaleY(.12); }
+
+    .art { overflow: hidden; }
+    .art svg { width: 100%; height: 100%; }
+    .hero-art { max-width: 1200px; margin: var(--s-6) auto 0; aspect-ratio: 16 / 10; }
+    .banner { aspect-ratio: 2 / 1; border-radius: var(--r-3); margin-bottom: var(--s-6); }
+    @media (max-width: 600px) {
+      .hero-art { aspect-ratio: 1 / 1; }
+      .banner { aspect-ratio: 4 / 3; }
     }
 
-    .btn:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 2px;
-    }
+    main > section { padding: clamp(48px, 8vw, 88px) 0; }
+    main > section + section { border-top: 1px solid var(--line); }
+    .story .lead { font-size: clamp(19px, 17.5px + .4vw, 22px); color: var(--text); margin-bottom: 0; }
 
-    section {
-      padding: 48px 0;
-      border-top: 1px solid var(--line);
-    }
+    .steps { display: grid; gap: var(--s-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); margin: 0; padding: 0; list-style: none; }
+    .step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2); padding: var(--s-5); box-shadow: var(--sh-1); }
+    .step-head { display: flex; align-items: baseline; gap: var(--s-3); margin-bottom: var(--s-3); color: var(--accent); }
+    .step-num { font-family: var(--font-title); font-size: 40px; line-height: 1; }
+    .step-label { font-size: var(--fs-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .step p { margin: 0; color: var(--muted); }
 
-    .grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
+    ul.promises { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+    ul.promises li { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: var(--s-4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2); padding: var(--s-5); box-shadow: var(--sh-1); }
+    ul.promises li > svg { grid-row: span 2; margin-top: 2px; }
+    ul.promises li p { margin: var(--s-1) 0 0; color: var(--muted); }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px;
-    }
+    .limits { background: var(--surface-2); border-radius: var(--r-3); padding: clamp(24px, 4vw, 40px); }
+    .limits ul { margin: var(--s-2) 0 var(--s-4); padding-left: 22px; }
+    .limits li { margin-bottom: var(--s-2); }
+    .limits p:last-child { margin-bottom: 0; }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
+    .offer { background: var(--accent-soft); border-radius: var(--r-3); padding: clamp(28px, 5vw, 48px) clamp(20px, 5vw, 48px); box-shadow: var(--sh-2); }
+    .offer-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--s-4); }
+    .offer-head svg { flex: 0 0 auto; margin-top: 4px; }
+    .offer > p { max-width: var(--measure); }
+    .tally { width: 100%; border: 0; margin: 18px 0 10px; background: transparent; min-height: 200px; }
+    .small { font-size: var(--fs-small); color: var(--muted); }
 
-    .step {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 14px;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
+    .knot .k-loop, .knot .k-left, .knot .k-right { transform-box: fill-box; transform-origin: 50% 50%; transition: transform var(--d-knot) var(--ease-pull); }
+    .knot path { transition: stroke var(--d-knot) var(--ease-pull); }
+    .is-tight .knot { --il-rope: var(--accent); --il-ropet: var(--il-sea3); }
+    .is-tight .knot .k-loop { transform: scale(.78); }
+    .is-tight .knot .k-left { transform: translateX(-7px); }
+    .is-tight .knot .k-right { transform: translateX(7px); }
 
-    ul.promises {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 14px;
-    }
+    details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-2); margin-bottom: var(--s-3); }
+    summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); padding: 14px 18px; min-height: 52px; border-radius: var(--r-2); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-family: var(--font-title); font-size: 26px; line-height: 1; color: var(--accent); transition: transform var(--d-tension) var(--ease-tension); }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p { color: var(--muted); margin: 0; padding: 0 18px 16px; }
 
-    ul.promises li {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--accent);
-      border-radius: 8px;
-      padding: 16px 18px;
-    }
+    footer { border-top: 1px solid var(--line); padding: var(--s-7) 0 var(--s-8); }
+    footer .wrap { display: flex; flex-direction: column; gap: var(--s-4); }
 
-    ul.promises li p {
-      margin: 4px 0 0;
-      color: var(--muted);
+    @media (prefers-reduced-motion: no-preference) {
+      .swell { animation: swell var(--d-swell) var(--ease-swell) infinite alternate; transform-box: fill-box; transform-origin: 50% 85%; }
+      .knot-art .d1 { animation: drift200 26.7s linear infinite; }
+      .knot-art .d2 { animation: drift160 21.3s linear infinite; }
+      .knot-art .d3 { animation: drift150 20s linear infinite; }
+      .ithaca-art .d1 { animation: drift220 29.3s linear infinite; }
+      .ithaca-art .d2 { animation: drift170 22.7s linear infinite; }
+      .ithaca-art .d3 { animation: drift130 17.3s linear infinite; }
+      .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--d-reveal) var(--ease-settle), transform var(--d-reveal) var(--ease-settle); }
+      .js .reveal.is-in { opacity: 1; transform: none; }
+      @supports (animation-timeline: scroll()) {
+        .hero-art .px-48 { animation: px48 linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
+        .hero-art .px-28 { animation: px28 linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
+        .hero-art .px-16 { animation: px16 linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
+        .hero-art .px-8 { animation: px8 linear both; animation-timeline: scroll(root); animation-range: 0 100vh; }
+      }
     }
-
-    .limits {
-      background: var(--warn-soft);
-      border-radius: 10px;
-      padding: 20px;
+    @media (prefers-reduced-motion: reduce) {
+      .btn, .btn .cord g, .knot .k-loop, .knot .k-left, .knot .k-right, .knot path, summary::after { transition: none; }
     }
-
-    .limits ul {
-      margin: 8px 0 0;
-      padding-left: 20px;
-    }
-
-    .offer {
-      background: var(--accent-soft);
-      border-radius: 12px;
-      padding: 28px 20px;
-    }
-
-    .tally {
-      width: 100%;
-      border: 0;
-      margin: 18px 0 10px;
-      background: transparent;
-      min-height: 200px;
-    }
-
-    .small {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    details {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px 18px;
-      margin-bottom: 10px;
-    }
-
-    summary {
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    details p {
-      color: var(--muted);
-      margin: 10px 0 0;
-    }
-
-    footer {
-      padding: 32px 0 48px;
-      border-top: 1px solid var(--line);
-    }
+    @keyframes swell { from { transform: translateY(0) rotate(-.6deg); } to { transform: translateY(5px) rotate(.6deg); } }
+    @keyframes drift120 { to { transform: translateX(-120px); } }
+    @keyframes drift130 { to { transform: translateX(-130px); } }
+    @keyframes drift140 { to { transform: translateX(-140px); } }
+    @keyframes drift150 { to { transform: translateX(-150px); } }
+    @keyframes drift160 { to { transform: translateX(-160px); } }
+    @keyframes drift170 { to { transform: translateX(-170px); } }
+    @keyframes drift200 { to { transform: translateX(-200px); } }
+    @keyframes drift220 { to { transform: translateX(-220px); } }
+    @keyframes px48 { to { transform: translateY(48px); } }
+    @keyframes px28 { to { transform: translateY(28px); } }
+    @keyframes px16 { to { transform: translateY(16px); } }
+    @keyframes px8 { to { transform: translateY(8px); } }
+    .story-ctrl { display: flex; justify-content: flex-end; margin-top: var(--s-3); }
+    .btn-sec { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px; border-radius: var(--r-1); border: 1.5px solid var(--accent); background: transparent; color: var(--accent); font: 600 15px/1.2 var(--font-text); cursor: pointer; }
+    .btn-sec:hover { background: var(--accent-soft); }
+    @media (prefers-reduced-motion: reduce) { .story-ctrl { display: none; } }
+    .tale { position: relative; max-width: 1200px; margin: var(--s-6) auto 0; }
+    .tale .hero-art { margin: 0; }
+    .story-caps { list-style: none; margin: 0; padding: 0; display: grid; position: absolute; top: clamp(16px, 3vw, 32px); left: var(--gutter); max-width: 36ch; }
+    .cap { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 2px; font-size: var(--fs-small); line-height: 1.45; color: var(--text); }
+    .cap-n { font-family: var(--font-title); font-size: 19px; color: var(--accent); }
+    @media (max-width: 600px) { .story-caps { position: static; max-width: none; padding: var(--s-4) var(--gutter) 0; } }
+    @media (prefers-reduced-motion: no-preference) { .js .tale .cap { opacity: 0; } }
+    /* Séquence du héros, boucle de 20 s : I. le chant · II. le passage · III. Ithaque */
+    .story-art .seq{animation-duration:20s;animation-timing-function:cubic-bezier(.45,0,.55,1);animation-fill-mode:both;animation-iteration-count:infinite}
+    .story-art .s-curtain{animation-name:pa-curtain}
+    .story-art .cap{animation-duration:20s;animation-timing-function:cubic-bezier(.45,0,.55,1);animation-fill-mode:both;animation-iteration-count:infinite}.story-art .c1{animation-name:pa-cap1}.story-art .c2{animation-name:pa-cap2}.story-art .c3{animation-name:pa-cap3}
+    .story-art .s-sun{animation-name:pa-sun}.story-art .s-far{animation-name:pa-far}.story-art .s-camback{animation-name:pa-camback}.story-art .s-cam{animation-name:pa-cam}
+    .story-art .s-ship{animation-name:pa-ship}.story-art .s-uly{animation-name:pa-uly}.story-art .s-king{animation-name:pa-king}.story-art .s-song{animation-name:pa-song}
+    .story-art .s-head{animation-name:pa-head;transform-origin:640px 314px}.story-art .s-lean{animation-name:pa-lean;transform-origin:640px 500px}
+    .story-art .s-rope{animation-name:pa-rope}.story-art .r2{animation-delay:.12s}.story-art .r3{animation-delay:.24s}.story-art .r4{animation-delay:.36s}
+    .story-art .s-furl{animation-name:pa-furl}.story-art .s-sail{animation-name:pa-sail;transform-origin:640px 198px}
+    .story-art .s-wing{animation-name:pa-wing;transform-origin:-2px -20px}.story-art .s-wing2{animation-delay:.5s}
+    .story-art .arc{animation:pa-arc 2.4s cubic-bezier(.16,1,.3,1) infinite both;transform-origin:250px 300px}.story-art .a1{animation-delay:.6s}.story-art .a2{animation-delay:1.05s}.story-art .a3{animation-delay:1.5s}.story-art .a4{animation-delay:1.95s}
+    .story-art .oar{animation:pa-oar 2.4s cubic-bezier(.45,0,.55,1) infinite both;transform-box:fill-box;transform-origin:100% 0}
+    .story-art .swell{animation:pa-swell 7s cubic-bezier(.45,0,.55,1) infinite alternate;transform-box:fill-box;transform-origin:50% 85%}
+    .story-art .d1{animation:pa-drift-140 18.7s linear infinite}.story-art .d2{animation:pa-drift-160 21.3s linear infinite}.story-art .d3{animation:pa-drift-120 16s linear infinite}
+    .story-art.is-paused *{animation-play-state:paused!important}
+    @media (prefers-reduced-motion: reduce){.story-art *{animation:none!important}.story-art .c2,.story-art .c3{display:none}}
+    @keyframes pa-curtain{0%{opacity:1}3%,96%{opacity:0}100%{opacity:1}}
+    @keyframes pa-cap1{0%,2%{opacity:0;transform:translateY(6px)}6%,27%{opacity:1;transform:none}30%,100%{opacity:0;transform:none}}
+    @keyframes pa-cap2{0%,31%{opacity:0;transform:translateY(6px)}35%,58%{opacity:1;transform:none}61%,100%{opacity:0;transform:none}}
+    @keyframes pa-cap3{0%,64%{opacity:0;transform:translateY(6px)}68%,93%{opacity:1;transform:none}96%,100%{opacity:0;transform:none}}
+    @keyframes pa-cam{0%,30%{transform:translateX(0)}80%,100%{transform:translateX(-2300px)}}
+    @keyframes pa-camback{0%,30%{transform:translateX(0)}80%,100%{transform:translateX(-1610px)}}
+    @keyframes pa-far{0%,30%{transform:translateX(0)}80%,100%{transform:translateX(-690px)}}
+    @keyframes pa-sun{0%,30%{transform:none}84%,100%{transform:translate(100px,90px)}}
+    @keyframes pa-ship{0%{transform:translateX(0)}30%,62%{transform:translateX(40px)}80%,100%{transform:translateX(-330px)}}
+    @keyframes pa-head{0%,8%{transform:rotate(0)}18%,28%{transform:rotate(-9deg)}37%{transform:rotate(3deg)}43%,100%{transform:rotate(0)}}
+    @keyframes pa-lean{0%,9%{transform:rotate(0)}19%,28%{transform:rotate(-2.5deg)}38%,100%{transform:rotate(0)}}
+    @keyframes pa-wing{0%{transform:rotate(0)}6%{transform:rotate(-12deg)}12%{transform:rotate(0)}18%{transform:rotate(-12deg)}26%,100%{transform:rotate(0)}}
+    @keyframes pa-arc{0%{opacity:0;transform:scale(.6)}30%{opacity:1}100%{opacity:0;transform:scale(1.15)}}
+    @keyframes pa-song{0%,31%{opacity:1}40%,100%{opacity:0}}
+    @keyframes pa-rope{0%,52%{opacity:1;transform:translateY(0)}58%,100%{opacity:0;transform:translateY(24px)}}
+    @keyframes pa-furl{0%,58%{opacity:1}62%,100%{opacity:0}}
+    @keyframes pa-sail{0%,58%{opacity:0;transform:scaleY(0)}59%{opacity:1}68%,100%{opacity:1;transform:scaleY(1)}}
+    @keyframes pa-uly{0%,76%{opacity:1}80%,100%{opacity:0}}
+    @keyframes pa-king{0%,78%{opacity:0;transform:translateY(8px)}86%,100%{opacity:1;transform:none}}
+    @keyframes pa-oar{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+    @keyframes pa-swell{from{transform:translateY(0) rotate(-.6deg)}to{transform:translateY(5px) rotate(.6deg)}}
+    @keyframes pa-drift-120{to{transform:translateX(-120px)}}@keyframes pa-drift-140{to{transform:translateX(-140px)}}@keyframes pa-drift-160{to{transform:translateX(-160px)}}
+    .theme-btn { margin-left: auto; display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 8px 14px; border-radius: var(--r-pill); border: 1px solid var(--line); background: var(--surface); color: var(--text); font: 600 15px/1 var(--font-text); cursor: pointer; transition: background-color var(--d-tension) var(--ease-tension); }
+    .theme-btn:hover { background: var(--accent-soft); }
+    .theme-btn .i-sun { display: none; }
+    .is-dark .theme-btn .i-sun { display: block; }
+    .is-dark .theme-btn .i-moon { display: none; }
+    @media (max-width: 420px) { .theme-label { display: none; } .theme-btn { padding: 8px 12px; } }
   </style>
+  <script>document.documentElement.className += " js";
+    try { var t = localStorage.getItem("pactulys-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}</script>
 </head>
 
 <body>
-  <header class="wrap"><span class="brand">Pactulys</span> <span class="tagline">le pacte d'Ulysse pour votre PC</span>
+  <a class="skip" href="#contenu">Aller au contenu</a>
+  <header class="wrap"><svg viewBox="0 0 214 48" height="34" width="152" role="img" aria-label="Pactulys"><g><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></g><text x="56" y="34" style="fill:var(--logo-text,#1a1411);font-family:Marcellus,serif;font-size:31px;letter-spacing:.5px">Pactulys</text></svg> <span class="tagline">le pacte d'Ulysse pour votre PC</span>
+  <button type="button" class="theme-btn" id="theme-btn" aria-label="Passer au thème sombre"><svg class="i-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/></svg><svg class="i-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="theme-label">Sombre</span></button>
   </header>
 
-  <main>
-    <div class="wrap hero">
-      <h1>Un engagement contre la pornographie qui tient vraiment.</h1>
-      <p class="lead">Vous choisissez une durée. Pactulys bloque la pornographie sur votre PC Windows jusqu'à son terme.
-        Une fois le verrou posé, ni vous ni personne ne peut le lever plus tôt, et rien de votre vie privée ne quitte
-        votre ordinateur.</p>
-      <a class="btn" href="#liste">Rejoindre la liste d'attente</a>
+  <main id="contenu">
+    <div class="hero">
+      <div class="wrap">
+        <h1>Un engagement contre la pornographie qui tient vraiment.</h1>
+        <p class="lead">Vous choisissez une durée. Pactulys bloque la pornographie sur votre PC Windows jusqu'à son terme.
+          Une fois le verrou posé, ni vous ni personne ne peut le lever plus tôt, et rien de votre vie privée ne quitte
+          votre ordinateur.</p>
+        <a class="btn" href="#liste">Rejoindre la liste d'attente <svg class="cord" width="28" height="12" viewBox="0 0 28 12" aria-hidden="true" focusable="false"><g><path d="M2 6 Q8 12 14 6 T26 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></g><circle cx="26" cy="6" r="2.6" fill="currentColor"/></svg></a>
+      </div>
+      <figure class="tale story-art" id="hero-art">
+        <div class="art hero-art"><svg viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animation en trois temps. Ulysse, attaché au mât de son navire, écoute calmement le chant de deux sirènes à corps d'oiseau ; ses marins rament, la cire dans les oreilles. Le navire dépasse les rochers, le chant s'éteint, la corde tombe et la voile s'ouvre. À Ithaque, le navire accoste et Ulysse retrouve son trône."><rect x="-20" y="-20" width="1240" height="790" style="fill:var(--il-sky,#f3ece0)"/><g class="px px-48"><g class="seq s-sun"><circle cx="960" cy="170" r="78" style="fill:var(--il-sun,#c86b3c)"/></g></g><g class="seq s-far" opacity=".28"><path d="M1240 496 Q1360 462 1480 496 Z M1980 496 Q2140 452 2300 496 Z M2620 496 Q2700 474 2780 496 Z" style="fill:var(--il-rock,#3a2f27)"/></g><g class="px px-8"><g class="seq s-camback"><g class="drift d1"><path d="M-140 770 L-140 485 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 L3220 770 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-140 770 L-140 492 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 q35 -7 70 0 q35 7 70 0 L3220 770 Z" style="fill:var(--il-sea1,#4d9580)"/></g></g></g><g class="px px-28"><g class="seq s-cam"><g transform="translate(100 0)"><path d="M-110 560 L-110 430 L-40 400 L40 380 L95 360 L140 305 L180 318 L215 335 L250 405 L300 470 L320 560 Z" style="fill:var(--il-rock,#3a2f27)"/><g class="seq s-song"><path class="arc a1" d="M311.8 267.1 A70 70 0 0 1 311.8 332.9" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-song,#c86b3c)" opacity="1.00"/><path class="arc a2" d="M351.5 246.0 A115 115 0 0 1 351.5 354.0" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-song,#c86b3c)" opacity="0.84"/><path class="arc a3" d="M391.3 224.9 A160 160 0 0 1 391.3 375.1" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-song,#c86b3c)" opacity="0.68"/><path class="arc a4" d="M431.0 203.8 A205 205 0 0 1 431.0 396.2" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-song,#c86b3c)" opacity="0.52" stroke-dasharray="2 14"/></g><g transform="translate(70 332) scale(1.3)"><path d="M-8 20 L-10 36 M8 18 L10 36" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path d="M-6 -30 Q-34 -10 -30 14 L-54 30 L-22 26 Q2 30 18 16 Q26 -6 8 -30 Z" style="fill:var(--il-fig,#1a1411)"/><g class="seq s-wing"><path d="M-2 -20 Q-40 -30 -64 -4 Q-46 14 -20 12 Q-2 6 -2 -20 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-56 -2 Q-40 6 -22 4 M-48 -14 Q-34 -6 -18 -6 M-30 -20 Q-18 -16 -8 -14" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/></g><path d="M-8 -50 Q-22 -42 -16 -28 L-2 -32 Z" style="fill:var(--il-fig,#1a1411)"/><circle cx="2" cy="-42" r="12" style="fill:var(--il-fig,#1a1411)"/><circle cx="7" cy="-44" r="1.8" style="fill:var(--il-inc,#efe4d2)"/></g><g transform="translate(200 290) scale(1.3)"><path d="M-8 20 L-10 36 M8 18 L10 36" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path d="M-6 -30 Q-34 -10 -30 14 L-54 30 L-22 26 Q2 30 18 16 Q26 -6 8 -30 Z" style="fill:var(--il-fig,#1a1411)"/><g class="seq s-wing s-wing2"><path d="M-2 -20 Q-40 -30 -64 -4 Q-46 14 -20 12 Q-2 6 -2 -20 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-56 -2 Q-40 6 -22 4 M-48 -14 Q-34 -6 -18 -6 M-30 -20 Q-18 -16 -8 -14" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/></g><path d="M-8 -50 Q-22 -42 -16 -28 L-2 -32 Z" style="fill:var(--il-fig,#1a1411)"/><circle cx="2" cy="-42" r="12" style="fill:var(--il-fig,#1a1411)"/><circle cx="7" cy="-44" r="1.8" style="fill:var(--il-inc,#efe4d2)"/></g></g><path d="M2860 540 Q2990 430 3120 450 Q3260 384 3420 440 Q3540 470 3720 446 L3720 560 L2860 560 Z" style="fill:var(--il-rock,#3a2f27)"/><path d="M3004 512 Q2998 460 3016 404 M3012 450 Q3030 430 3044 420" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rock2,#241c17)"/><ellipse cx="2992" cy="398" rx="46" ry="22" style="fill:var(--il-sea2,#2f7663)"/><ellipse cx="3050" cy="388" rx="44" ry="21" style="fill:var(--il-sea2,#2f7663)"/><ellipse cx="3020" cy="362" rx="38" ry="20" style="fill:var(--il-sea2,#2f7663)"/><path d="M2972 396 Q2992 390 3010 396 M3034 386 Q3052 380 3070 386" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)" opacity=".7"/><path d="M2850 570 Q2884 520 2960 514 L3720 506 L3720 800 L2850 800 Z" style="fill:var(--il-rock2,#241c17)"/><g transform="translate(3200 506)"><g class="seq s-king" opacity="0"><rect x="-104" y="-12" width="226" height="12" style="fill:var(--il-rock,#3a2f27)"/><path d="M-40 -74 Q-50 -112 -38 -152" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path d="M-58 -150 Q-40 -163 -20 -152" fill="none" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><rect x="-48" y="-78" width="98" height="10" rx="3" style="fill:var(--il-rope,#d08a3c)"/><path d="M42 -68 Q50 -36 64 -12 M-38 -68 Q-48 -36 -62 -12" fill="none" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path d="M-30 -150 Q-54 -110 -48 -78 L-30 -80 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-30 -150 Q-8 -160 10 -146 L12 -82 L-34 -82 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-34 -96 L46 -96 L48 -78 L-34 -78 Z" style="fill:var(--il-fig,#1a1411)"/><rect x="34" y="-80" width="14" height="62" style="fill:var(--il-fig,#1a1411)"/><rect x="34" y="-22" width="27" height="9" rx="3" style="fill:var(--il-fig,#1a1411)"/><path d="M-20 -140 L-22 -86 M-6 -90 L40 -90" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><path d="M42 -220 V-14" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><circle cx="42" cy="-224" r="7" style="fill:var(--il-rope,#d08a3c)"/><path d="M4 -138 Q24 -124 42 -118" fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><circle cx="-8" cy="-172" r="19" style="fill:var(--il-fig,#1a1411)"/><path d="M-26 -166 Q-24 -142 -8 -138 Q8 -142 10 -166 Q-8 -156 -26 -166 Z" style="fill:var(--il-fig,#1a1411)"/><rect x="-27" y="-188" width="38" height="5" rx="2" style="fill:var(--il-rope,#d08a3c)"/><circle cx="2" cy="-174" r="2.2" style="fill:var(--il-inc,#efe4d2)"/></g></g></g></g><g class="px px-16"><g class="seq s-ship"><g transform="translate(60 0)"><g class="swell"><path d="M640 150 L370 505 M640 150 L912 497" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><rect x="632" y="150" width="16" height="355" style="fill:var(--il-fig,#1a1411)"/><g class="seq s-sail" opacity="0"><path d="M505 198 L775 198 Q792 300 770 404 L510 404 Q490 300 505 198 Z" style="fill:var(--il-song,#c86b3c)"/><path d="M508 250 H778 M506 302 H782 M510 354 H778" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)" opacity=".8"/></g><rect x="500" y="188" width="280" height="10" style="fill:var(--il-fig,#1a1411)"/><g class="seq s-furl"><path d="M505 198 Q640 232 775 198 L775 210 Q640 248 505 210 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M520 208 Q640 236 760 208" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/></g><circle cx="480" cy="488" r="11" style="fill:var(--il-fig,#1a1411)"/><circle cx="487" cy="487" r="3.5" style="fill:var(--il-inc,#efe4d2)"/><circle cx="540" cy="488" r="11" style="fill:var(--il-fig,#1a1411)"/><circle cx="547" cy="487" r="3.5" style="fill:var(--il-inc,#efe4d2)"/><circle cx="750" cy="488" r="11" style="fill:var(--il-fig,#1a1411)"/><circle cx="757" cy="487" r="3.5" style="fill:var(--il-inc,#efe4d2)"/><circle cx="810" cy="488" r="11" style="fill:var(--il-fig,#1a1411)"/><circle cx="817" cy="487" r="3.5" style="fill:var(--il-inc,#efe4d2)"/><g class="seq s-uly"><g class="seq s-lean"><rect x="618" y="438" width="14" height="64" style="fill:var(--il-fig,#1a1411)"/><rect x="648" y="438" width="14" height="64" style="fill:var(--il-fig,#1a1411)"/><path d="M608 324 Q640 312 672 324 L682 446 L598 446 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M624 342 L618 440 M656 342 L662 440 M640 330 V440" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><g class="seq s-head"><circle cx="640" cy="294" r="21" style="fill:var(--il-fig,#1a1411)"/><path d="M621 300 Q624 326 640 330 Q656 326 659 300 Q640 312 621 300 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M617 289 Q620 256 640 252 Q660 256 663 289 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M619 284 H661" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><circle cx="630" cy="292" r="2.2" style="fill:var(--il-inc,#efe4d2)"/></g><rect class="seq s-rope r1" x="592" y="348" width="96" height="9" rx="4" style="fill:var(--il-rope,#d08a3c)"/><rect class="seq s-rope r2" x="592" y="382" width="96" height="9" rx="4" style="fill:var(--il-rope,#d08a3c)"/><rect class="seq s-rope r3" x="592" y="416" width="96" height="9" rx="4" style="fill:var(--il-rope,#d08a3c)"/><rect class="seq s-rope r4" x="610" y="470" width="60" height="8" rx="4" style="fill:var(--il-rope,#d08a3c)"/></g></g><path class="oar" d="M460 560 L415 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M520 560 L475 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M580 560 L535 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M640 560 L595 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M700 560 L655 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M760 560 L715 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path class="oar" d="M820 560 L775 640" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path d="M905 500 Q965 470 955 420 Q948 392 922 402" fill="none" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path d="M360 505 L920 495 Q905 550 830 575 L470 578 Q420 565 395 535 L330 540 L360 505 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M385 518 L905 508 M430 545 L860 545" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><circle cx="402" cy="520" r="6" style="fill:var(--il-inc,#efe4d2)"/></g></g></g></g><g class="seq s-cam"><g class="drift d2"><path d="M-200 770 L-200 581 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 L3960 770 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-200 770 L-200 588 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 q40 -9 80 0 q40 9 80 0 L3960 770 Z" style="fill:var(--il-sea2,#2f7663)"/></g></g><g class="seq s-cam"><path d="M1060 620 L1100 530 L1160 505 L1230 540 L1230 770 L1060 770 Z" style="fill:var(--il-rock2,#241c17)"/></g><g class="seq s-cam"><g class="drift d3"><path d="M-130 770 L-130 655 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 L3830 770 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-130 770 L-130 662 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 q30 -8 60 0 q30 8 60 0 L3830 770 Z" style="fill:var(--il-sea3,#1f5f4a)"/></g></g><rect class="seq s-curtain" x="-20" y="-20" width="1240" height="790" opacity="0" style="fill:var(--il-sky,#f3ece0)"/></svg></div>
+        <ol class="story-caps" aria-label="L'histoire en trois temps">
+          <li class="cap c1"><span class="cap-n">I · Le chant</span><span>Attaché au mât, Ulysse écoute les sirènes. Il l'a décidé avant d'approcher : la corde tient.</span></li>
+          <li class="cap c2"><span class="cap-n">II · Le passage</span><span>Les marins, la cire dans les oreilles, rament sans s'arrêter. Le chant s'éteint, la corde peut tomber.</span></li>
+          <li class="cap c3"><span class="cap-n">III · Ithaque</span><span>Le cap est tenu. Ulysse retrouve son trône.</span></li>
+        </ol>
+      </figure>
+      <div class="wrap story-ctrl"><button type="button" class="btn-sec" id="story-btn" aria-controls="hero-art" aria-pressed="false">Mettre en pause</button></div>
     </div>
 
-    <section>
-      <div class="wrap">
+    <section class="story">
+      <div class="wrap reveal">
         <h2>Le pacte d'Ulysse</h2>
         <p class="lead">Ulysse voulait entendre le chant des sirènes sans s'y jeter. Avant d'approcher, il s'est fait
           attacher au mât et a ordonné à son équipage de ne pas le détacher, quoi qu'il dise ensuite. Il savait qu'à ce
@@ -262,7 +288,7 @@
     </section>
 
     <section>
-      <div class="wrap">
+      <div class="wrap reveal">
         <h2>Pourquoi un verrou qu'on ne peut pas lever ?</h2>
         <p class="lead">Les bloqueurs habituels se désactivent en deux clics, au moment précis où l'on voudrait qu'ils
           tiennent. Pactulys part du principe inverse : la décision se prend à tête reposée, et elle tient pendant le
@@ -271,47 +297,49 @@
     </section>
 
     <section>
-      <div class="wrap">
+      <div class="wrap reveal">
+        <div class="art banner knot-art"><svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Gros plan : une corde épaisse se noue autour du mât du navire, devant la mer et la ligne d'horizon."><rect x="-20" y="-20" width="1240" height="640" style="fill:var(--il-sky,#f3ece0)"/><circle cx="980" cy="150" r="56" style="fill:var(--il-sun,#c86b3c)"/><g class="drift d1"><path d="M-200 620 L-200 393 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 L1400 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-200 620 L-200 400 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 q50 -5 100 0 q50 5 100 0 L1400 620 Z" style="fill:var(--il-sea1,#4d9580)"/></g><g class="drift d2"><path d="M-190 620 L-190 473 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 L1410 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-190 620 L-190 480 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 q40 -7 80 0 q40 7 80 0 L1410 620 Z" style="fill:var(--il-sea2,#2f7663)"/></g><rect x="540" y="-20" width="120" height="660" style="fill:var(--il-fig,#1a1411)"/><path d="M570 0 V600 M600 0 V600 M630 0 V600" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)" opacity=".35"/><path class="" d="M520 190 L680 150" fill="none" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M520 190 L680 150" fill="none" stroke-width="28" stroke-dasharray="2.8000000000000003 10.36" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/><path class="" d="M520 235 L680 195" fill="none" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M520 235 L680 195" fill="none" stroke-width="28" stroke-dasharray="2.8000000000000003 10.36" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/><path class="" d="M520 280 L680 240" fill="none" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M520 280 L680 240" fill="none" stroke-width="28" stroke-dasharray="2.8000000000000003 10.36" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/><path class="" d="M528 282 C440 310 360 380 240 640" fill="none" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M528 282 C440 310 360 380 240 640" fill="none" stroke-width="28" stroke-dasharray="2.8000000000000003 10.36" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/><path class="" d="M676 236 C780 210 830 320 760 350 C690 380 650 300 720 280 C790 260 880 360 990 640" fill="none" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M676 236 C780 210 830 320 760 350 C690 380 650 300 720 280 C790 260 880 360 990 640" fill="none" stroke-width="28" stroke-dasharray="2.8000000000000003 10.36" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/><g class="drift d3"><path d="M-150 620 L-150 553 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 L1350 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-150 620 L-150 560 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 q37.5 -6 75 0 q37.5 6 75 0 L1350 620 Z" style="fill:var(--il-sea3,#1f5f4a)"/></g></svg></div>
         <h2>Comment ça marche</h2>
-        <div class="grid">
-          <div class="card">
-            <div class="step">1. Installer</div>
+        <ol class="steps">
+          <li class="step">
+            <div class="step-head"><span class="step-num">1</span><span class="step-label">Installer</span></div>
             <h3>Sur votre PC Windows</h3>
             <p>Le blocage s'active dès l'installation : sites pornographiques, recherche filtrée, navigation privée
               fermée.</p>
-          </div>
-          <div class="card">
-            <div class="step">2. S'engager</div>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="step-num">2</span><span class="step-label">S'engager</span></div>
             <h3>Choisir une durée</h3>
             <p>Quand vous êtes prêt, vous posez un verrou : une heure, une semaine, plus. Vous pouvez le prolonger,
               jamais le raccourcir.</p>
-          </div>
-          <div class="card">
-            <div class="step">3. Tenir</div>
+          </li>
+          <li class="step">
+            <div class="step-head"><span class="step-num">3</span><span class="step-label">Tenir</span></div>
             <h3>Jusqu'au terme</h3>
             <p>Pendant le verrou, Pactulys se défend : arrêt, désinstallation et contournements connus sont refusés. À
               la fin, vous retrouvez la main.</p>
-          </div>
-        </div>
+          </li>
+        </ol>
       </div>
     </section>
 
     <section>
-      <div class="wrap">
+      <div class="wrap reveal">
+        <div class="art banner ithaca-art"><svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Le navire d'Ulysse, voile déployée, s'éloigne sur une mer calme vers Ithaque, une île basse sous le soleil."><rect x="-20" y="-20" width="1240" height="640" style="fill:var(--il-sky,#f3ece0)"/><circle cx="820" cy="350" r="84" style="fill:var(--il-sun,#c86b3c)"/><path d="M680 356 Q740 312 800 322 Q860 284 940 320 Q1000 334 1070 356 Z" style="fill:var(--il-rock,#3a2f27)"/><g class="drift d1"><path d="M-220 620 L-220 345 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 L1540 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-220 620 L-220 352 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 q55 -3 110 0 q55 3 110 0 L1540 620 Z" style="fill:var(--il-sea1,#4d9580)"/></g><rect x="754" y="378" width="132" height="5" rx="2.5" style="fill:var(--il-sun,#c86b3c)" opacity=".7"/><rect x="767" y="398" width="106" height="5" rx="2.5" style="fill:var(--il-sun,#c86b3c)" opacity=".7"/><rect x="780" y="420" width="80" height="5" rx="2.5" style="fill:var(--il-sun,#c86b3c)" opacity=".7"/><rect x="793" y="444" width="54" height="5" rx="2.5" style="fill:var(--il-sun,#c86b3c)" opacity=".7"/><path d="M300 452 q40 -7 80 0 M250 468 q40 -7 80 0 M330 436 q30 -5 60 0" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><g class="l-ship"><g transform="translate(430 424) scale(1.5)"><g class="swell"><rect x="-2" y="-78" width="4" height="78" style="fill:var(--il-fig,#1a1411)"/><path d="M-34 -70 L34 -70 Q40 -40 34 -12 L-34 -12 Q-28 -40 -34 -70 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-26 -50 H28 M-26 -32 H30" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/><path d="M-66 0 Q-86 -12 -82 -30" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-fig,#1a1411)"/><path d="M-70 0 L64 -2 Q58 14 42 20 L-48 20 Q-60 14 -70 0 Z" style="fill:var(--il-fig,#1a1411)"/><path d="M-60 8 L58 7" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-inc,#efe4d2)"/></g></g></g><g class="drift d2"><path d="M-190 620 L-190 483 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 L1510 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-190 620 L-190 490 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 q42.5 -8 85 0 q42.5 8 85 0 L1510 620 Z" style="fill:var(--il-sea2,#2f7663)"/></g><g class="drift d3"><path d="M-130 620 L-130 553 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 L1430 620 Z" style="fill:var(--il-shade,rgba(20,35,30,.22))"/><path d="M-130 620 L-130 560 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 q32.5 -7 65 0 q32.5 7 65 0 L1430 620 Z" style="fill:var(--il-sea3,#1f5f4a)"/></g></svg></div>
         <h2>Nos engagements, écrits avant l'achat</h2>
         <ul class="promises">
-          <li><strong>Un verrou en cours va toujours à son terme.</strong>
+          <li><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true" focusable="false"><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></svg><strong>Un verrou en cours va toujours à son terme.</strong>
             <p>Ni la fin de l'abonnement, ni un impayé, ni une demande au support ne le lèvent.</p>
           </li>
-          <li><strong>Pas de sortie à la demande.</strong>
+          <li><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true" focusable="false"><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></svg><strong>Pas de sortie à la demande.</strong>
             <p>Nous ne levons jamais un verrou parce qu'on nous le demande. Seules exceptions : une urgence vitale ou
               une obligation légale, par une procédure écrite et tracée.</p>
           </li>
-          <li><strong>Votre accès administrateur reste à vous.</strong>
+          <li><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true" focusable="false"><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></svg><strong>Votre accès administrateur reste à vous.</strong>
             <p>Une clé de secours sur papier, que vous confiez à un proche ou à un coffre, vous rend l'accès complet à
               votre machine.</p>
           </li>
-          <li><strong>Aucune surveillance.</strong>
+          <li><svg viewBox="0 0 48 48" width="28" height="28" aria-hidden="true" focusable="false"><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></svg><strong>Aucune surveillance.</strong>
             <p>Notre serveur ne connaît que l'heure et l'état du verrou. Aucun site visité, aucun historique, aucune
               image ne quitte votre ordinateur. Le filtrage se fait sur l'appareil.</p>
           </li>
@@ -320,7 +348,7 @@
     </section>
 
     <section>
-      <div class="wrap">
+      <div class="wrap reveal">
         <div class="limits">
           <h2>Ce que Pactulys ne fait pas</h2>
           <p>Nous préférons le dire clairement plutôt que vous le laisser découvrir :</p>
@@ -337,7 +365,10 @@
     <section id="liste">
       <div class="wrap">
         <div class="offer">
-          <h2>Windows d'abord. Offre pionniers.</h2>
+          <div class="offer-head">
+            <h2>Windows d'abord. Offre pionniers.</h2>
+            <svg class="knot" viewBox="0 0 160 80" width="96" height="48" aria-hidden="true" focusable="false"><g class="k-left"><path class="" d="M6 50 C30 50 46 42 62 40" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M6 50 C30 50 46 42 62 40" fill="none" stroke-width="9" stroke-dasharray="0.9 3.33" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/></g><g class="k-right"><path class="" d="M98 40 C114 42 130 50 154 50" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M98 40 C114 42 130 50 154 50" fill="none" stroke-width="9" stroke-dasharray="0.9 3.33" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/></g><g class="k-loop"><path class="" d="M62 40 C58 16 102 14 98 38 C96 58 66 60 70 42 C72 32 86 30 98 40" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--il-rope,#d08a3c)"/><path class="" d="M62 40 C58 16 102 14 98 38 C96 58 66 60 70 42 C72 32 86 30 98 40" fill="none" stroke-width="9" stroke-dasharray="0.9 3.33" opacity=".55" style="stroke:var(--il-ropet,#8a5420)"/></g></svg>
+          </div>
           <p>Pactulys sortira d'abord sur Windows, avec un abonnement et 14 jours d'essai gratuit, sans carte bancaire.
             Les premiers inscrits bénéficieront d'un prix pionniers réduit. Une version mobile suivra.</p>
           <!-- Formulaire Tally jadW1a (modifiable sur tally.so). Le lien sert si l'intégration est bloquée. -->
@@ -365,7 +396,7 @@
     </section>
 
     <section>
-      <div class="wrap">
+      <div class="wrap reveal">
         <h2>Questions fréquentes</h2>
         <details>
           <summary>Et si je change d'avis pendant le verrou ?</summary>
@@ -397,9 +428,64 @@
   </main>
 
   <footer>
-    <div class="wrap small">Pactulys, en préparation. Contact : <a
-        href="mailto:giovidoh@gmail.com">giovidoh@gmail.com</a></div>
+    <div class="wrap small"><svg viewBox="0 0 214 48" height="28" width="125" role="img" aria-label="Pactulys"><g><rect x="21.5" y="4" width="5" height="34" rx="2" style="fill:var(--logo-ink,#1f5f4a)"/><path d="M26.5 5 L40 9.5 L26.5 14 Z" style="fill:var(--logo-rope,#c86b3c)"/><path d="M14.5 21.5 Q24 17.5 33.5 21.5 M14.5 28.5 Q24 24.5 33.5 28.5" fill="none" stroke-width="3.4" stroke-linecap="round" style="stroke:var(--logo-rope,#c86b3c)"/><path d="M5 43 q4.75 -4 9.5 0 t9.5 0 t9.5 0 t9.5 0" fill="none" stroke-width="3" stroke-linecap="round" style="stroke:var(--logo-ink,#1f5f4a)"/></g><text x="56" y="34" style="fill:var(--logo-text,#1a1411);font-family:Marcellus,serif;font-size:31px;letter-spacing:.5px">Pactulys</text></svg><span>Pactulys, en préparation. Contact : <a
+        href="mailto:giovidoh@gmail.com">giovidoh@gmail.com</a></span></div>
   </footer>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("is-in"); }); return; }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -10% 0px" });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+    // Le nœud se serre quand le formulaire Tally signale un envoi (message postMessage, l'iframe n'est pas modifiée).
+    window.addEventListener("message", function (e) {
+      if (!/tally\.so$/.test(String(e.origin).replace(/^https?:\/\//, ""))) return;
+      var d = e.data;
+      if (typeof d === "string") { try { d = JSON.parse(d); } catch (_) { return; } }
+      if (d && d.event === "Tally.FormSubmitted") { var o = document.querySelector(".offer"); if (o) o.classList.add("is-tight"); }
+    });
+    (function () {
+      var art = document.getElementById("hero-art"), btn = document.getElementById("story-btn");
+      if (!art || !btn) return;
+      var userPaused = false, inView = false;
+      var sync = function () {
+        art.classList.toggle("is-paused", userPaused || !inView);
+        btn.textContent = userPaused ? "Lecture" : "Mettre en pause";
+        btn.setAttribute("aria-pressed", String(userPaused));
+      };
+      sync();
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) { inView = en[0].isIntersecting; sync(); }, { threshold: 0.35 }).observe(art);
+      } else { inView = true; sync(); }
+      btn.addEventListener("click", function () { userPaused = !userPaused; sync(); });
+    })();
+    (function () {
+      var root = document.documentElement, btn = document.getElementById("theme-btn");
+      if (!btn) return;
+      var mq = window.matchMedia("(prefers-color-scheme: dark)");
+      var cur = function () { return root.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); };
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      var sync = function () {
+        var d = cur() === "dark";
+        root.classList.toggle("is-dark", d);
+        btn.querySelector(".theme-label").textContent = d ? "Clair" : "Sombre";
+        btn.setAttribute("aria-label", d ? "Passer au thème clair" : "Passer au thème sombre");
+        metas.forEach(function (m) { m.setAttribute("content", d ? "#0f1a17" : "#f3ece0"); });
+      };
+      btn.addEventListener("click", function () {
+        var next = cur() === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("pactulys-theme", next); } catch (e) {}
+        sync();
+      });
+      if (mq.addEventListener) mq.addEventListener("change", sync);
+      sync();
+    })();
+  </script>
 </body>
 
 </html>
